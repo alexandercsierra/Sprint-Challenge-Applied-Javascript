@@ -63,7 +63,12 @@ axios.get("https://lambda-times-backend.herokuapp.com/articles")
 function createCard(art) {
     let card = document.createElement("div");
     card.classList.add("card");
-    card.setAttribute("data-topic", art["data-topic"]);
+    if (art["data-topic"] !== "node"){
+        card.classList.add(art["data-topic"]);
+    } else if(art["data-topic"] === "node") {
+        card.classList.add("node.js");
+    }
+    
 
 
     let headline = document.createElement("div");

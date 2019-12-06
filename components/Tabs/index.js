@@ -14,27 +14,32 @@ function createTab(topic){
     let tab = document.createElement("div");
     tab.classList.add("tab");
     tab.textContent = topic;
-    // let parent = document.querySelector(".topics");
-
-    
-
     return tab;
 }
 
 axios.get("https://lambda-times-backend.herokuapp.com/topics")
     .then(response => {
+        response.data.topics.push("All");
         response.data.topics.map(topic => {
             let newTab = createTab(topic);
             document.querySelector(".topics").appendChild(newTab);
             newTab.addEventListener("click", e =>{
-                // console.log(topic);
-                // console.log(artArray[0]);
-                for (let i=0; i<artArray.length; i++){
-                    console.log(artArray[i]);
-                    if (artArray[i].data-topic === topic){
+                if (topic !== "All"){
+                    for (let i=0; i<artArray.length; i++){
+                        // console.log(topic);
+                        if (artArray[i].classList.contains(topic)){
+                            artArray[i].style.display = "flex";
+                        } else{
+                            artArray[i].style.display = "none";
+                        }
+                    }
+                } else {
+                    for (let i=0; i<artArray.length; i++){
+                        artArray[i].style.display = "flex";
                         
                     }
                 }
+                
             })
             
         })
