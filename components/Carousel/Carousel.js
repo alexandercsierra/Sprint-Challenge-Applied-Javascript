@@ -60,11 +60,20 @@ function createCarousel(){
     }
     let index = imgArr.indexOf(currentImg);
       if (imgArr[index+1] !== undefined){
-        imgArr[index].style.display = "none";
-        imgArr[index+1].style.display = "block";
+        // imgArr[index].style.display = "none";
+        // imgArr[index+1].style.display = "block";
+        // $(imgArr[index]).hide(1000);
+        // $(imgArr[index+1]).show(1000);
+        $(imgArr[index]).animate({width:'toggle'},"slow");
+        $(imgArr[index+1]).animate({width:'toggle'},"slow");
+
       } else{
-        imgArr[index].style.display = "none";
-        imgArr[0].style.display = "block";
+        // imgArr[index].style.display = "none";
+        // imgArr[0].style.display = "block";
+        // $(imgArr[index]).hide(1000);
+        // $(imgArr[0]).show(1000);
+        $(imgArr[index]).animate({width:'toggle'},"slow");
+        $(imgArr[0]).animate({width:'toggle'},"slow");
       }
   });
 
@@ -77,11 +86,19 @@ function createCarousel(){
     }
     let index = imgArr.indexOf(currentImg);
       if (imgArr[index-1] !== undefined){
-        imgArr[index].style.display = "none";
-        imgArr[index-1].style.display = "block";
+        // imgArr[index].style.display = "none";
+        // imgArr[index-1].style.display = "block";
+        // $(imgArr[index]).hide(1000);
+        // $(imgArr[index-1]).show(1000);
+        $(imgArr[index]).animate({width:'toggle'},"slow");
+        $(imgArr[index-1]).animate({width:'toggle'},"slow");
       } else{
-        imgArr[index].style.display = "none";
-        imgArr[imgArr.length-1].style.display = "block";
+        // imgArr[index].style.display = "none";
+        // imgArr[imgArr.length-1].style.display = "block";
+        // $(imgArr[index]).hide(1000);
+        // $(imgArr[imgArr.length-1]).show(1000);
+        $(imgArr[index]).animate({width:'toggle'},"slow");
+        $(imgArr[imgArr.length-1]).animate({width:'toggle'},"slow");
       }
   });
   
