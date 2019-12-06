@@ -28,6 +28,7 @@ function createCarousel(){
 
   let img1 = document.createElement("img");
   img1.src = "./assets/carousel/mountains.jpeg";
+  img1.style.display = "block";
 
   let img2 = document.createElement("img");
   img2.src = "./assets/carousel/computer.jpeg";
@@ -39,6 +40,7 @@ function createCarousel(){
   img4.src = "./assets/carousel/turntable.jpeg";
 
   let rightBtn = document.createElement("div");
+  rightBtn.classList.add("right-button");
 
   carousel.appendChild(leftBtn);
   carousel.appendChild(img1);
@@ -46,6 +48,21 @@ function createCarousel(){
   carousel.appendChild(img3);
   carousel.appendChild(img4);
   carousel.appendChild(rightBtn);
+
+  let imgArr = [img1, img2, img3, img4];
+
+  rightBtn.addEventListener("click", e => {
+    //loop through imgArr
+    //show next image
+    //if next image undefined, show first image
+    console.log("clicked");
+  })
   
   return carousel;
 }
+
+let carParent = document.querySelector(".carousel-container");
+carParent.appendChild(createCarousel());
+
+// console.log(createCarousel());
+
