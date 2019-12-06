@@ -52,11 +52,38 @@ function createCarousel(){
   let imgArr = [img1, img2, img3, img4];
 
   rightBtn.addEventListener("click", e => {
-    //loop through imgArr
-    //show next image
-    //if next image undefined, show first image
-    console.log("clicked");
-  })
+    let currentImg = imgArr[0];
+    for (let i=0; i<imgArr.length; i++){
+      if(imgArr[i].style.display === "block"){
+        currentImg = imgArr[i]
+      }
+    }
+    let index = imgArr.indexOf(currentImg);
+      if (imgArr[index+1] !== undefined){
+        imgArr[index].style.display = "none";
+        imgArr[index+1].style.display = "block";
+      } else{
+        imgArr[index].style.display = "none";
+        imgArr[0].style.display = "block";
+      }
+  });
+
+  leftBtn.addEventListener("click", e => {
+    let currentImg = imgArr[0];
+    for (let i=0; i<imgArr.length; i++){
+      if(imgArr[i].style.display === "block"){
+        currentImg = imgArr[i]
+      }
+    }
+    let index = imgArr.indexOf(currentImg);
+      if (imgArr[index-1] !== undefined){
+        imgArr[index].style.display = "none";
+        imgArr[index-1].style.display = "block";
+      } else{
+        imgArr[index].style.display = "none";
+        imgArr[imgArr.length-1].style.display = "block";
+      }
+  });
   
   return carousel;
 }
