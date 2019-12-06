@@ -18,22 +18,53 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
+//AllTopics = [bootstrap, javascript, jquery, node, technology]
+let artArray = [];
 axios.get("https://lambda-times-backend.herokuapp.com/articles")
     .then(response => {
         let allTopics = response.data.articles;
         let topics = Object.values(allTopics);
-        topics.forEach(topic => 
+        let topicNames = Object.keys(allTopics);
+        // console.log("all" + allTopics);
+        // console.log("keys: " + topicNames);
+        // console.log(topics);
+        topics.forEach(topic => {
+
             topic.forEach(article => {
+                // console.log(topic);
+                // if parent of article is equal to "something"
+                //add attibute of "something"
+
+                //if AllTopics[i].includes(article) => add attribute
+                for (let i=0; i<topicNames.length; i++){
+                    let currentTopic = topicNames[i]
+                    
+                    // console.log(topicName[i]);
+                    if (allTopics[currentTopic].includes(article)){
+                        // console.log(currentTopic);
+                        article["data-topic"] = currentTopic;
+  
+                    }
+                }
                 let cardParent = document.querySelector(".cards-container");
-                cardParent.appendChild(createCard(article));
-            }));
+                let newCard = createCard(article);
+                cardParent.appendChild(newCard);
+                artArray.push(newCard);
+                
+            })
+        }
+            
+            
+        );
     })
-    .catch(err => console.log(error))
+    .catch(err => console.log(err))
 
 
 function createCard(art) {
     let card = document.createElement("div");
     card.classList.add("card");
+    card.setAttribute("data-topic", art["data-topic"]);
+
 
     let headline = document.createElement("div");
     headline.classList.add("headline");
